@@ -120,7 +120,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/qr/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "qr",
+]
 
 TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), 'suppliers/templates'),
