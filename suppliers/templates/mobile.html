@@ -86,7 +86,7 @@
       <div class="header-content" id="header-content">
         <h1 class="title">{{facture.species}}</h1>
         <p class="text-1"><b class="text-2">ID:</b> 93-E192849148265</p>
-        <p class="text-1"><b class="text-2">Location:</b> Kirkonnumi, Finland</p>
+        <p class="text-1"><b class="text-2">Location:</b> Kirkkonnumi, Finland</p>
       </div>
     </div>
 
@@ -143,8 +143,8 @@
       <div class="meat-analysis-content" id="header-content">
         <h3 class="title">Meat Analysis</h3>
         <br>
-        <p class="text"><b class="title-2">Meat Percentage:</b>67</p>
-        <p class="text"><b class="title-2">Fat Percentage:</b>33</p>
+        <p class="text"><b class="title-2">Meat Percentage:</b>{{ facture.meat_percentage }}</p>
+        <p class="text"><b class="title-2">Fat Percentage:</b>{{ facture.fat_percentage }}</p>
         <p class="text"><b class="title-2">Weight:</b>{{facture.weight}} kg</p>
         <p class="text"><b class="title-2">Best Before:</b>{{facture.shelf_life_date}}</p>
         <p class="text"><b class="title-2">Date of Production:</b>{{facture.production_date}}</p>
@@ -169,7 +169,7 @@
         <p class="text"><b class="title-2">Years Active:</b>20 years</p>
         <p class="text"><b class="title-2">Factory Size:</b>2000 sq/m</p>
         <p class="text"><b class="title-2">Farming Area:</b>400 acres</p>
-        <p class="text"><b class="title-2">Annual CO2 emmision:</b>{{facture.total_carbon}}</p>
+{#        <p class="text"><b class="title-2">Annual CO2 emmision:</b>{{facture.total_carbon}}</p>#}
       </div>
       <br>
       <div class="mapouter"><div class="gmap_canvas"><iframe width="280" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Meat%20factory&t=k&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://fmovies2.org"></a></div><style>.mapouter{position:relative;text-align:center;height:500px;width:280px;} .gmap_canvas {overflow:hidden;background:none!important;text-align:center;height:500px;width:280px;}</style></div>
@@ -179,11 +179,6 @@
     <div class="ender-gapper">
       <!-- This is meant for a gap at the bottom of the screen to compensate for the invisibility of the content behind the bottom-nav bar -->
     </div>
-
-
-
-
-
 
   <style media="screen">
 
