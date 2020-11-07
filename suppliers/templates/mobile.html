@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HKScan navigation bar</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font-awesome -->
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+   <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+   <script>
+      var x = document.getElementById("demo");
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+      }
+      var position = getLocation();
+      var params = new Object();
+      params.id = {{ facture.id }}
+      params.latitude = position.coords.latitude;
+      params.longitude = position.coords.longitude;
+
+      // Turn the data object into an array of URL-encoded key/value pairs.
+      let urlEncodedData = "", urlEncodedDataPairs = [], name;
+      for( name in params ) {
+       urlEncodedDataPairs.push(encodeURIComponent(name)+'='+encodeURIComponent(params[name]));
+      }
+
+      var http = new XMLHttpRequest();
+      var url = 'http://nikolai44.pythonanywhere.com/coord/add'; // need to define url
+      http.open('POST', url, true);
+
+      //Send the proper header information along with the request
+      http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+      http.onreadystatechange = function() {//Call a function when the state changes.
+          if(http.readyState === 4 && http.status === 200) {
+              alert(http.responseText);
+          }
+      }
+      http.send(params);
+    </script>
+
+    <!-- style -->
+    <link rel="stylesheet" href="../../qr/mobile.css">
+  </head>
+  <body>
+    <div class="top-nav">
+      <div class="hkscan-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/HKScan_logo.svg/1485px-HKScan_logo.svg.png" alt="">
+      </div>
+    </div>
+
+    <div class="bottom-nav">
+      <div class="row">
+        <div class="col">
+          <a href="" onclick=""><i class="fas fa-cart-arrow-down"></i></a>
+        </div>
+        <div class="col">
+          <a href="" onclick=""><i class="fas fa-clock"></i></a>
+        </div>
+        <div class="col selected">
+          <a href="" onclick=""><i id="item-selected" class="fas fa-qrcode"></i></a>
+        </div>
+        <div class="col">
+          <a href="" onclick=""><i class="fas fa-heart"></i></a>
+        </div>
+        <div class="col">
+          <a href="" onclick=""><i class="fas fa-user-circle"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="header-component" id="header-component">
+      <div class="header-content" id="header-content">
+        <h1 class="title">{{facture.species}}</h1>
+        <p class="text-1"><b class="text-2">ID:</b> 93-E192849148265</p>
+        <p class="text-1"><b class="text-2">Location:</b> Kirkonnumi, Finland</p>
+      </div>
+    </div>
+
+
+    <div class="journey" id="journey">
+      <h3 class="title title-color">The Journey</h3>
+      <ul>
+        <li>
+          <b class="text-2">You</b>
+          <p><!--Empty--></p>
+          <p class="text-1">Arrived: 03.11.2020 19.47</p>
+        </li>
+        <li>
+          <b class="text-2">Lidl, Espoo</b>
+          <p><!--Empty--></p>
+          <p class="text-1">Bought: 02.11.2020 14.25</p>
+          <p class="text-1">Arrived: 03.11.2020 18.15</p>
+        </li>
+        <li>
+          <b class="text-2">Meat Distributer's Oy</b>
+          <p><!--Empty--></p>
+          <p class="text-1">Sent: 01.11.2020 13.47</p>
+          <p class="text-1">Arrived: 02.11.2020 17.02</p>
+        </li>
+        <li>
+          <b class="text-2">Meat Registry Oy</b>
+          <p><!--Empty--></p>
+          <p class="text-1">Sent: 01.11.2020 10.57</p>
+          <p class="text-1">Arrived: 01.11.2020 09.40</p>
+        </li>
+        <li>
+          <b class="text-2">Meat Factory Oy</b>
+          <p><!--Empty--></p>
+          <p class="text-1">Sent: 01.11.2020 08.00</p>
+        </li>
+      </ul>
+    </div>
+
+
+    <div class="meat-content-component" id="header-component">
+      <div class="meat-content-content" id="header-content">
+        <h3 class="title">Meat Content</h3>
+        <br>
+        <p class="text"><b class="title-2">Cow Species:</b>{{facture.species}}</p>
+        <p class="text"><b class="title-2">Meat Part:</b>{{facture.part}}</p>
+        <p class="text"><b class="title-2">Gender:</b>{{facture.gender}}</p>
+        <p class="text"><b class="title-2">Cow Weight:</b>{{facture.total_weight}} kg</p>
+        <p class="text"><b class="title-2">Age:</b>{{ facture.age }} months</p>
+      </div>
+    </div>
+
+
+    <div class="meat-analysis-component" id="header-component">
+      <div class="meat-analysis-content" id="header-content">
+        <h3 class="title">Meat Analysis</h3>
+        <br>
+        <p class="text"><b class="title-2">Meat Percentage:</b>67</p>
+        <p class="text"><b class="title-2">Fat Percentage:</b>33</p>
+        <p class="text"><b class="title-2">Weight:</b>{{facture.weight}} kg</p>
+        <p class="text"><b class="title-2">Best Before:</b>{{facture.shelf_life_date}}</p>
+        <p class="text"><b class="title-2">Date of Production:</b>{{facture.production_date}}</p>
+      </div>
+    </div>
+
+
+    <div class="co2-component" id="co2-component">
+      <div class="co2-content" id="co2-content">
+        <h3 class="title title-color">Carbon Footprint</h3>
+        <p class="text-1"><b class="text-2">{{ facture.carbon_footprint }} CO2</b> / <b class="text-2">{{ facture.weight }} kg</b></p>
+      </div>
+    </div>
+
+
+    <div class="factory-component" id="factory-component">
+      <h3 class="title title-color">Factory Information</h3>
+      <br>
+      <div class="factory-content">
+        <p class="text"><b class="title-2">Location:</b>Kirkkonummintie 18, Kirkkonummi  02000, Finland</p>
+        <p class="text"><b class="title-2">Factory Name:</b>Kirkkonummen Factory Oy</p>
+        <p class="text"><b class="title-2">Years Active:</b>20 years</p>
+        <p class="text"><b class="title-2">Factory Size:</b>2000 sq/m</p>
+        <p class="text"><b class="title-2">Farming Area:</b>400 acres</p>
+        <p class="text"><b class="title-2">Annual CO2 emmision:</b>{{facture.total_carbon}}</p>
+      </div>
+      <br>
+      <div class="mapouter"><div class="gmap_canvas"><iframe width="280" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Meat%20factory&t=k&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://fmovies2.org"></a></div><style>.mapouter{position:relative;text-align:center;height:500px;width:280px;} .gmap_canvas {overflow:hidden;background:none!important;text-align:center;height:500px;width:280px;}</style></div>
+    </div>
+
+
+    <div class="ender-gapper">
+      <!-- This is meant for a gap at the bottom of the screen to compensate for the invisibility of the content behind the bottom-nav bar -->
+    </div>
+
+
+
+
+
+
+  <style media="screen">
+
+  </style>
+  </body>
+</html>

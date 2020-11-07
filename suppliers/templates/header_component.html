@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Header Commponent</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+{#    <!-- Google Font -->#}
+{#    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">#}
+{#     <!-- Google Font -->#}
+{#    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">#}
+
+    <!-- style -->
+    <link rel="stylesheet" href="../../qr/meat-content_component.css">
+    <!-- Font-awesome -->
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+   <script>
+      var x = document.getElementById("demo");
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+      }
+
+      var params = new Object();
+      params.id = // product id
+      params.latitude = position.coords.latitude;
+      params.longitude = position.coords.longitude;
+
+      // Turn the data object into an array of URL-encoded key/value pairs.
+      let urlEncodedData = "", urlEncodedDataPairs = [], name;
+      for( name in params ) {
+       urlEncodedDataPairs.push(encodeURIComponent(name)+'='+encodeURIComponent(params[name]));
+      }
+
+      var http = new XMLHttpRequest();
+      var url = 'get_data.php'; // need to define url
+      http.open('POST', url, true);
+
+      //Send the proper header information along with the request
+      http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+      http.onreadystatechange = function() {//Call a function when the state changes.
+          if(http.readyState == 4 && http.status == 200) {
+              alert(http.responseText);
+          }
+      }
+      http.send(params);
+    </script>
+
+    <!-- style -->
+    <link rel="stylesheet" href="../../qr/nav-bar_component.css">
+    <!-- style -->
+    <link rel="stylesheet" href="../../qr/header_component.css">
+      <link rel="stylesheet" href="../../qr/meat-analysis_component.css">
+  </head>
+  <body>
+    <div class="header-component" id="header-component">
+      <div class="header-content" id="header-content">
+        <h1 class="title"><!-- Meat name placeholder --> Meat Name</h1>
+        <p class="text-1"><b class="text-2">ID:</b> <!-- ID number placeholder--></p>
+        <p class="text-1"><b class="text-2">Location:</b> <!-- Location placeholder--></p>
+      </div>
+    </div>
+    <div class="meat-analysis-component" id="header-component">
+        <div class="meat-analysis-content" id="header-content">
+        <h3 class="title">Meat Analysis</h3>
+        <br>
+        <p class="text"><b class="title-2">Meat Percentage:</b>{{facture.meat_percentage}}</p>
+        <p class="text"><b class="title-2">Fat Percentage:</b>{{facture.fat_percentage}}</p>
+        <p class="text"><b class="title-2">Weight:</b>{{facture.weight}}</p>
+        <p class="text"><b class="title-2">Best Before:</b>{{facture.shelf_life_date}}</p>
+        <p class="text"><b class="title-2">Date of Production:</b>{{ facture.production_date }}</p>
+      </div>
+    </div>
+{#  </body>#}
+{#   <body>#}
+{#    <div class="meat-analysis-component" id="header-component">#}
+{#      <div class="meat-analysis-content" id="header-content">#}
+{#        <h3 class="title">Meat Analysis</h3>#}
+{#        <br>#}
+{#        <p class="text"><b class="title-2">Meat Percentage:</b>{{facture.meat_percentage}}</p>#}
+{#        <p class="text"><b class="title-2">Fat Percentage:</b>{{facture.fat_percentage}}</p>#}
+{#        <p class="text"><b class="title-2">Weight:</b>{{facture.weight}}</p>#}
+{#        <p class="text"><b class="title-2">Best Before:</b>{{facture.shelf_life_date}}</p>#}
+{#        <p class="text"><b class="title-2">Date of Production:</b>{{ facture.production_date }}</p>#}
+{#      </div>#}
+{#    </div>#}
+{#  </body>#}
+{#<body>#}
+{#    <div class="meat-content-component" id="header-component">#}
+{#      <div class="meat-content-content" id="header-content">#}
+{#        <h3 class="title">Meat Content</h3>#}
+{#        <br>#}
+{#        <p class="text"><b class="title-2">Cow Species:</b><!-- Cow species placeholder --></p>#}
+{#        <p class="text"><b class="title-2">Meat Part:</b><!-- Meat part placeholder --></p>#}
+{#        <p class="text"><b class="title-2">Gender:</b><!-- Gender placeholder --></p>#}
+{#        <p class="text"><b class="title-2">Cow Weight:</b><!-- Cow weight placeholder --></p>#}
+{#        <p class="text"><b class="title-2">Age:</b><!-- Age placeholder --></p>#}
+{#      </div>#}
+{#    </div>#}
+  </body>
+</html>

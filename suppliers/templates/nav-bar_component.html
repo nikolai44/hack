@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>HKScan navigation bar</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font-awesome -->
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+   <script>
+      var x = document.getElementById("demo");
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+      }
+
+      var params = new Object();
+      params.id = // product id
+      params.latitude = position.coords.latitude;
+      params.longitude = position.coords.longitude;
+
+      // Turn the data object into an array of URL-encoded key/value pairs.
+      let urlEncodedData = "", urlEncodedDataPairs = [], name;
+      for( name in params ) {
+       urlEncodedDataPairs.push(encodeURIComponent(name)+'='+encodeURIComponent(params[name]));
+      }
+
+      var http = new XMLHttpRequest();
+      var url = 'get_data.php'; // need to define url
+      http.open('POST', url, true);
+
+      //Send the proper header information along with the request
+      http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+      http.onreadystatechange = function() {//Call a function when the state changes.
+          if(http.readyState == 4 && http.status == 200) {
+              alert(http.responseText);
+          }
+      }
+      http.send(params);
+    </script>
+
+    <!-- style -->
+    <link rel="stylesheet" href="../../qr/nav-bar_component.css">
+  </head>
+  <body>
+    <div class="nav-bar" id="nav-bar">
+      <div class="hkscanlogo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/HKScan_logo.svg/1485px-HKScan_logo.svg.png" alt="">
+      </div>
+      <div class="nav-items" id="nav-items">
+        <button class="nav-button nav-button-current button-text" type="button" name="button">
+          <i class="fas fa-qrcode"></i> Scanned Product
+        </button>
+        <br>
+        <br>
+        <button class="nav-button button-text" type="button" name="button">
+          <i class="fas fa-clock"></i> Past Scans
+        </button>
+        <br>
+        <br>
+        <button class="nav-button button-text" type="button" name="button">
+          <i class="fas fa-heart"></i> Personal Favourites
+        </button>
+        <br>
+        <br>
+        <button class="nav-button button-text" type="button" name="button">
+          <i class="fas fa-cart-plus"></i> Discover More
+        </button>
+        <br>
+        <br>
+        <button class="nav-button button-text" type="button" name="button">
+          <i class="fas fa-cart-plus"></i> Discover More
+        </button>
+      </div>
+      <div class="profile" id="profile">
+        <button class="profile-button button-text" type="button" name="button">
+          <i class="fas fa-user-circle"></i> <b>Jason Hu</b> <a href=""><i class="fas fa-cog"></i></a>
+        </button>
+      </div>
+    </div>
+  <style media="screen">
+
+  </style>
+
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Meat analysis Commponent</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- style -->
+    <link rel="stylesheet" href="../../qr/meat-analysis_component.css">
+  </head>
+  <body>
+    <div class="meat-analysis-component" id="header-component">
+      <div class="meat-analysis-content" id="header-content">
+        <h3 class="title">Meat Analysis</h3>
+        <br>
+        <p class="text"><b class="title-2">Meat Percentage:</b>{{facture.meat_percentage}}</p>
+        <p class="text"><b class="title-2">Fat Percentage:</b>{{facture.fat_percentage}}</p>
+        <p class="text"><b class="title-2">Weight:</b>{{facture.weight}}</p>
+        <p class="text"><b class="title-2">Best Before:</b>{{facture.shelf_life_date}}</p>
+        <p class="text"><b class="title-2">Date of Production:</b>{{ facture.production_date }}</p>
+      </div>
+    </div>
+  </body>
+</html>

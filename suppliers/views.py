@@ -24,9 +24,8 @@ def get_id(request, uid):
     facture = FactureModel.objects.get(pk=uid)
 
     return render(request,
-                  'jason.html',
-                    {'facture': facture})
-
+                  'mobile.html',
+                  {'facture': facture})
 
 def add_facture(request):
     if request.method == 'POST':

@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  cursor: default;
+}
+
+html, body {
+  height: 100%;
+  max-width: 100%;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: white;
+}
+
+body a:hover {
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  overflow-x: hidden;
+  display: none;
+  visibility: hidden;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.button-text {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+
+.nav-bar {
+  position: relative;
+  height: 100%;
+  width: 20%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.12);
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  padding: 0 22.5px 0 20px;
+}
+
+
+
+.hkscanlogo {
+  padding: 20px 0 20px 0;
+}
+
+.hkscanlogo img {
+  height: 30px;
+  cursor: pointer;
+}
+
+
+.nav-button {
+  width: 100%;
+  padding: 15px 0 15px 15px;
+  font-size: 15px;
+  border-radius: 15px;
+  border: none;
+  background-color: white;
+  color: #101010;
+  text-align: left;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+.nav-button-current {
+  width: 100%;
+  background-color: #386F41;
+  color: white;
+  font-size: 18px;
+}
+
+
+.profile-button {
+  position: absolute;
+  bottom: 20px;
+  width: 85%;
+  padding: 25px 0 25px 25px;
+  font-size: 15px;
+  border-radius: 25px;
+  border: none;
+  background-color: white;
+  color: #101010;
+  text-align: left;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0px;
+}
+
+.profile-button b {
+  padding-top: -1000px;
+}
+
+.profile-button .fa-cog {
+  float: right;
+  padding-right:  25px;
+  font-size: 22px;
+  cursor: pointer;
+}
