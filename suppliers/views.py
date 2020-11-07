@@ -16,6 +16,9 @@ def home_view(request):
     return render(request,
                   'home.html')
 
+def add_geodata(request):
+    return render(request,
+                  'home.html')
 
 def get_id(request, uid):
     facture = FactureModel.objects.get(pk=uid)
