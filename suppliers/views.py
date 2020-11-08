@@ -3,22 +3,33 @@ from .forms import FactureForm
 import json
 import os
 from django.http import JsonResponse
-from .models import FactureModel
+from .models import FactureModel, GeodataModel
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.views.decorators.csrf import csrf_exempt
 import qrcode
 from django.shortcuts import redirect
 
 fullpath = os.path.abspath(__file__)
 absdir = os.path.dirname(fullpath)
 
+
 def home_view(request):
     return render(request,
                   'home.html')
 
+
+@csrf_exempt
 def add_geodata(request):
-    return render(request,
-                  'home.html')
+    if request.method == 'POST':
+        print(request.body)
+        geo_json = json.loads(request.body)
+        geo = GeodataModel(uid_id=geo_json['id'],
+                           latitude=geo_json['latitude'],
+                           longitude=geo_json['longitude'])
+        geo.save()
+    return HttpResponse("Геоданные получил", status=200)
+
 
 def get_id(request, uid):
     facture = FactureModel.objects.get(pk=uid)
@@ -26,6 +37,7 @@ def get_id(request, uid):
     return render(request,
                   'mobile.html',
                   {'facture': facture})
+
 
 def add_facture(request):
     if request.method == 'POST':

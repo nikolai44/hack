@@ -25,10 +25,15 @@ class FactureModel(models.Model):
     food = models.CharField(max_length=200)
     carbon_footprint = models.FloatField()
 
-
     def publish(self):
         self.published_date = timezone.now()
         self.save()
 
     def __str__(self):
         return self.manufacture_name
+
+
+class GeodataModel(models.Model):
+    uid = models.ForeignKey(FactureModel, on_delete=models.CASCADE)
+    longitude = models.FloatField()
+    latitude = models.FloatField()
