@@ -44,7 +44,7 @@ def add_facture(request):
         form = FactureForm(request.POST)
         if form.is_valid():
             facture = form.save()
-            data = "http://nikolai44.pythonanywhere.com/get_info/" + str(facture.id)
+            data = "http://18.134.250.128:8000/get_info/" + str(facture.id)
             filepath = os.path.join(absdir, "../qr/qr" + str(facture.id) + ".png")
             img = qrcode.make(data)
             img.save(filepath)
