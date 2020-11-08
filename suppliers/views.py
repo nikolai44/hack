@@ -28,7 +28,7 @@ def add_geodata(request):
                            latitude=geo_json['latitude'],
                            longitude=geo_json['longitude'])
         geo.save()
-    return HttpResponse("Геоданные получил", status=200)
+    return HttpResponse("geodata received", status=200)
 
 
 def get_id(request, uid):
